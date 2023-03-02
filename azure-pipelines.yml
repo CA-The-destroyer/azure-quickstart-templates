@@ -1,10 +1,23 @@
+variables:
+  vmImageName: 'ubuntu-latest'
+  resourceGroupName: 'CA-Test-1' # Needs to already exist
+  location: 'centralus'
+  templateFile: './main.bicep'
+  sourceFolder: 'quickstarts/microsoft.web/webapp-linux-managed-mysql/'
+
+
 trigger:
 - none
 
 pool:
   vmImage: $(vmImageName)
 
-variables:
-  siteName: 'CA-Test-1-site'
-  administratorLogin: 'catest1mkii'
-  administratorLoginPassword: 'klsadbfG345@fsd'
+steps:
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: '<service-connection-name>'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(sourceFolder)$(templateFile) \
+      --parameters administratorLogin=$(administratorLogin) administratorLoginPassword=$(administratorLoginPassword)
