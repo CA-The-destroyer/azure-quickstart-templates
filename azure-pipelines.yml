@@ -15,7 +15,7 @@ pool:
 steps:
 - task: AzureCLI@2
   inputs:
-    azureSubscription: '<service-connection-name>'
+    azureSubscription: 'Azure Sponsorship(24e0c215-7514-4b29-b55f-cf45c6b5f603)'
     scriptType: bash
     scriptLocation: inlineScript
     inlineScript: |
