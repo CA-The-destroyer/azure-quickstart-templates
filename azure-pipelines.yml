@@ -1,0 +1,10 @@
+trigger:
+- none
+
+pool:
+  vmImage: $(vmImageName)
+
+variables:
+  siteName: 'CA-Test-1-site'
+  administratorLogin: 'catest1mkii'
+  administratorLoginPassword: 'klsadbfG345@fsd'
